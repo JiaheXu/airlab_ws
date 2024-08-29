@@ -1,0 +1,95 @@
+////////////////////////////////////////////////////////////////////////
+// setup & install docker
+////////////////////////////////////////////////////////////////////////
+- name: Docker Setup
+  hosts: all
+  gather_facts: False
+  vars_files:
+    - ../../config/install_options.yaml
+
+  tasks:
+    - name: Update apt packages
+      become: true
+      apt:
+        update_cache: yes
+
+    - name: Install Docker dependency packages
+      become: true
+      apt:
+        name:
+          - ca-certificates
+          - curl
+          - software-properties-common
+        state: present
+      when: install_docker
+
+    - name: Add Docker's official GPG key
+      become: true
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+      when: install_docker and arch_type == 'x86'
+
+    - name: Add Docker APT repository
+      become: true
+      apt_repository:
+        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+      when: install_docker and arch_type == 'x86'
+
+    - name: Update apt packages
+      become: true
+      apt:
+        update_cache: yes
+
+    - name: Install Docker
+      become: true
+      apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+        state: present
+      when: install_docker and arch_type == 'x86'
+
+    - name: Add user to docker group
+      become: true
+      user:
+        name: "{{ lookup('env', 'USER') }}"
+        groups: docker
+        append: yes
+      when: install_docker
+
+    - name: Validate Docker installation
+      shell: docker --version
+      register: docker_version_out
+      when: install_docker
+
+    - name: Display Docker version
+      debug:
+        msg: "Docker version: {{ docker_version_out.stdout }}"
+      when: install_docker
+
+    - name: Ensure daemon.json exists
+      stat:
+        path: /etc/docker/daemon.json
+      register: docker_daemon_stat
+      when: install_docker
+
+    - name: Create default daemon.json
+      become: true
+      copy:
+        src: ../files/docker_daemon.json
+        dest: /etc/docker/daemon.json
+      when: install_docker and not docker_daemon_stat.stat.exists
+
+    - name: Set Docker Daemon DNS
+      become: true
+      shell: |
+        jq '.dns = ["8.8.8.8", "8.8.4.4"]' /etc/docker/daemon.json > /tmp/daemon.json.new && mv /tmp/daemon.json.new /etc/docker/daemon.json
+      when: install_docker and arch_type == 'x86'
+
+    - name: Disable Docker Daemon IPv6
+      become: true
+      shell: |
+        jq '.ipv6 = false' /etc/docker/daemon.json > /tmp/daemon.json.new && mv /tmp/daemon.json.new /etc/docker/daemon.json
+      when: install_docker and arch_type == 'x86'

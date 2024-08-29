@@ -1,0 +1,36 @@
+# Ignore deviceQuery executable copy
+javis_docker/dockerfiles/cuda/arm/deviceQuery/deviceQuery
+
+# Ignore .catkin_profile files that are not to be tracked
+# the default configs are already committed, to add new
+# ones just force commit them! (git add -f ...)
+.catkin_tools/
+
+# Ignore build files
+build/
+devel/
+logs/
+dds_install/
+src/
+
+__pycache__/
+*.pyc
+
+.vscode/
+
+notes.TODO
+
+# ignore desktop icons
+!operations/javis_deploy/desktop_icons/.templates
+!operations/javis_deploy/desktop_icons/basestation
+operations/javis_deploy/desktop_icons
+
+# ignore dds in docker image install
+operations/javis_docker/dockerfiles/javis/thirdparty-software/download/
+
+# ignore auto-generated ansible template host configurations
+operations/javis_ansible/templates/host_ips.generated.yaml
+
+
+# Temporary for DTC the project.
+src/dtc_*/
