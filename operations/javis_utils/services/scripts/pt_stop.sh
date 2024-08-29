@@ -11,4 +11,4 @@ robot_hostname=$(hostname)
 robot=${robot_hostname#"javis-"}
 
 # Starts drivers in the docker container
-robot=${robot} tmuxp load -d /home/javis/javis_ws/operations//javis_deploy/tmux/pt-xavier.stop.yaml
+robot=${robot} tmuxp load -d /home/javis/javis_ws/operations//javis_deploy/tmux/pt-orin.stop.yaml

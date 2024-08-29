@@ -5,7 +5,7 @@
   tasks:
     - name: Check for running hit server
       become: true
-      shell: sudo hit list
+      shell: hit list
       register: hit_list_result
       ignore_errors: True
   
@@ -41,7 +41,7 @@
       when: local_javis_path != ""
 
     - name: Generate deployer egg
-      shell: "cd /tmp/deployer/ && python setup.py install --record /tmp/egg-files.txt --user"
+      shell: "cd /tmp/deployer/ && python3 setup.py install --record /tmp/egg-files.txt --user"
       ignore_errors: True
       when: local_javis_path != ""
 

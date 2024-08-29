@@ -1,6 +1,6 @@
 # please run this inside docker javis_estimation
 
-# clone Torch-TensorRT tag v1.0.0 for Xavier NX and build inside docker, must be performed outside of dockerfile since it uses nvidia runtime
+# clone Torch-TensorRT tag v1.0.0 for orin NX and build inside docker, must be performed outside of dockerfile since it uses nvidia runtime
 cd ~/thirdparty-software
 
 git clone --recursive https://github.com/pytorch/TensorRT.git Torch-TensorRT -b v1.2.0

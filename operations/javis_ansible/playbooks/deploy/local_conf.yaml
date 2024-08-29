@@ -13,12 +13,12 @@
     - name: Set Logging Dir (Non)
       set_fact:
         logging_dir: ~/logging/local
-      when: not jetson_xavier
+      when: not jetson_orin
 
     - name: Set Logging Dir (Jetson)
       set_fact:
         logging_dir: /external/logging
-      when: jetson_xavier
+      when: jetson_orin
 
     - name: Create logging dir
       file:

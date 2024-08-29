@@ -10,13 +10,17 @@
 
 - include: misc/base_setup.yaml
 - include: misc/anydesk.yaml
-# - include: misc/azure.yaml
-# - include: misc/docker.yaml
-# # - include: misc/docker_tools.yaml
-# - include: misc/docker_nvidia.yaml
-# - include: misc/ros.yaml
+
+
+- include: misc/ros.yaml
+- include: misc/docker.yaml
+- include: misc/docker_tools.yaml
+- include: misc/docker_nvidia.yaml
 
 - include: deploy/payload_tools.yaml
+# - include: misc/azure.yaml
+# # - include: misc/docker_tools.yaml
+# - include: misc/docker_nvidia.yaml
 
 - include: deploy/python_scripts_install.yaml
 - include: deploy/launch_setup_install.yaml

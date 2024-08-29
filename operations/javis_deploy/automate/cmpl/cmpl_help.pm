@@ -65,10 +65,10 @@ About: 18...
 
 our %_help_robots = (
   local       => "directly on any payload, basestation or laptop (simulation) host.",
-  pt001       => "rc car, xavier payload 001.",
-  pt002       => "rc car, xavier payload 002.",
-  pt003       => "rc car, xavier payload 003.",
-  spot001     => "spot, xavier payload 001.",
+  pt001       => "rc car, orin payload 001.",
+  pt002       => "rc car, orin payload 002.",
+  pt003       => "rc car, orin payload 003.",
+  spot001     => "spot, orin payload 001.",
 );
 
 our %_help_repository = (

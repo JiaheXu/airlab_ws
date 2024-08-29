@@ -17,7 +17,7 @@
         src: "../files/services/{{ item }}"
         dest: /etc/systemd/system
       become: true
-      with_items: [ "javis_spot_forward.service", "javis_velodyne_forward.service", "javis_pt_xavier.service"]
+      with_items: [ "javis_spot_forward.service", "javis_velodyne_forward.service", "javis_pt_orin.service"]
       when: payload_type != "None"
 
     - name: Enable Services

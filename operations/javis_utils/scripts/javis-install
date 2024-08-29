@@ -313,11 +313,11 @@ elif chk_flag --global $@ ; then
         text_color "At the time of writing this - there are no multi-host systems."
         text_color ""
         text_color "Valid options: "
-        text_color "     xavier                (an xavier computer in a payload)"
+        text_color "     orin                (an orin computer in a payload)"
         text_color "     dev                   (any development computer, choose this!)"
         SYSTEM_COMPONENT=$(read_text "JAVIS System Component:" dev)
 
-        if [ $SYSTEM_COMPONENT == "xavier" ] || [ $SYSTEM_COMPONENT == "dev" ]; then
+        if [ $SYSTEM_COMPONENT == "orin" ] || [ $SYSTEM_COMPONENT == "dev" ]; then
             set_correctly=true
         else
             error "Invalid system type, defaulting to 'dev'."

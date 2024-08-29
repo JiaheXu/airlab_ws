@@ -86,7 +86,7 @@
     #     update_cache: yes   # force apt-get update
     #   when: install_gstreamer_apt
 
-    - name: install xavier prerequisite packages
+    - name: install orin prerequisite packages
       become: true
       apt:
         name: "{{ apt.arm }}"
@@ -94,7 +94,7 @@
         force_apt_get: yes
         install_recommends: yes
         update_cache: yes   # force apt-get update
-      when: install_xavier_apt and "x86" not in arch_type
+      when: install_orin_apt and "x86" not in arch_type
 
     # ////////////////////////////////////////////////////////////////////////
     # Install Remote Desktop

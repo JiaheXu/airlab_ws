@@ -1,5 +1,5 @@
 [Unit]
-Description=javis launch on pt xavier
+Description=javis launch on pt orin
 
 [Service]
 Type=simple

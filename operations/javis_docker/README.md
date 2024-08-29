@@ -169,7 +169,7 @@ Example would be your local laptop for gazebo, rviz visualization simulations.
 
 ## System arm
 
-Example ARM system would be NVIDIA Jetson Xavier.
+Example ARM system would be NVIDIA Jetson orin.
 
 ### Install Docker
 
